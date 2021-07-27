@@ -1,30 +1,59 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react"
+import CardDestination from "../components/cardDestination/cardDestination"
 
-export default function Search() {
-  const [isOrigin, setIsOrigin] = useState(true);
+const Search = () => {
+  const [origin, setOrigin] = useState()
+  const [destination, setDestination] = useState()
+
+  const fetchApi = async () => {
+    let url = "http://localhost:8000/db"
+
+    const response = await fetch(url)
+    const routes = await response.json()
+    setOrigin(routes)
+  }
+
+  useEffect(() => {
+    fetchApi()
+  }, [])
+
+  const handleSelectChange = () => {
+    const selected = document.getElementById("primarySelect").value
+    //console.log("Selected", selected)
+    setDestination(selected)
+    typeof origin != "undefined"
+      ? origin.db.routes.map(element => {
+          if (element.code === selected) {
+            setDestination(element.destinations)
+          }
+        })
+      : ""
+  }
+
   return (
-    <main>
-      <article>
-        <h1>Select your {isOrigin ? 'origin' : 'destination'}</h1>
-        <section>
-          <p>
-            Here should be a card approach list of all available origin
-            airports. When an origin airport is selected, the list should
-            display all available destination for given selection. The card
-            should have:
-          </p>
-          <ul>
-            <li>A dummy image</li>
-            <li>Should be selectable by clicking the whole card</li>
-            <li>Display the airport code</li>
-            <li>Display the location city name</li>
-          </ul>
-        </section>
-        <Link href="/flights">
-          <a>Start your journey!</a>
-        </Link>
-      </article>
-    </main>
-  );
+    <div>
+      <h2>Select your Origin Airport</h2>
+      <div>
+        <select onChange={handleSelectChange} id="primarySelect">
+          <option>Select airport</option>
+          {typeof origin != "undefined"
+            ? origin.db.routes.map((element, index) => (
+                <option value={element.code} key={index}>
+                  {element.description} ({element.code})
+                </option>
+              ))
+            : ""}
+        </select>
+      </div>
+      <div>
+        {typeof destination != "undefined" && destination
+          ? destination.map((element, index) => (
+              <CardDestination card={element} key={index} />
+            ))
+          : ""}
+      </div>
+    </div>
+  )
 }
+
+export default Search
