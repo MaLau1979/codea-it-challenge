@@ -1,20 +1,10 @@
-import React from 'react';
-import Link from 'next/link';
+import React from 'react'
 
-export default function Home() {
+import HomePage from '../components/pages/home/home'
+
+export default function Index(){
   return (
-    <main>
-      <h1>Home Page</h1>
-      <article>
-        <section>
-          <h2>Promotions</h2>
-        </section>
-        <section>
-          <Link href="/search">
-            <a>Search</a>
-          </Link>
-        </section>
-      </article>
-    </main>
-  );
+    <HomePage />
+  )
 }
+

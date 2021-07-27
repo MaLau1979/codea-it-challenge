@@ -1,0 +1,14 @@
+.container{
+  width: 100%;
+  height: 100vh;
+  background-image: url('../../public/assets/pexels-brett-sayles-1493756.jpg');
+  background-repeat: none;
+  background-size: cover;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% 80% 10%;
+}
+
+
+
