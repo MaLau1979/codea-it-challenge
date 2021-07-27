@@ -1,17 +1,23 @@
 {
-  "name": "codea-shareable-test",
-  "version": "1.0.0",
+  "name": "codea-it-challenge",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "next": "^11.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "json-server": "^0.16.3",
+    "moment": "^2.29.1",
+    "next": "11.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "sass": "^1.35.2"
   },
-  "license": "ISC",
-  "keywords": [],
-  "description": ""
+  "devDependencies": {
+    "eslint": "7.31.0",
+    "eslint-config-next": "11.0.1"
+  }
 }
