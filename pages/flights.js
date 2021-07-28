@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useRouter } from "next/router"
 
-import CardFlight from "../components/cardFlight/cardFlight"
+import CardFlight from "../components/cardFlight"
 import flightStyles from "./flights.module.scss"
 
 const Flights = () => {
@@ -32,16 +32,18 @@ const Flights = () => {
   }
 
   return (
-    <div className={flightStyles.content}>
-      <div className={flightStyles.sidebarContainer}></div>
-      <div className={flightStyles.cardContainer}>
-        <h2>Choose your outbound flight to Mendoza</h2>
-        {typeof flight != "undefined" && flight.flights
-          ? flight.flights.map((element, index) => (
-              <CardFlight className={flightStyles.card} data={element} />
-            ))
-          : ""}
-        <h2>Choose your inbound flight to Buenos Aires</h2>
+    <div className="main">
+      <div className={flightStyles.content}>
+        <div className={flightStyles.sidebarContainer}></div>
+        <div className={flightStyles.cardContainer}>
+          <h2>Choose your outbound flight to Mendoza</h2>
+          {typeof flight != "undefined" && flight.flights
+            ? flight.flights.map((element, index) => (
+                <CardFlight className={flightStyles.card} data={element} />
+              ))
+            : ""}
+          <h2>Choose your inbound flight to Buenos Aires</h2>
+        </div>
       </div>
     </div>
   )

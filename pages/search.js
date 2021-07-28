@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
-import CardDestination from "../components/cardDestination/cardDestination"
+import CardDestination from "../components/cardDestination"
+
+import searchStyles from "./search.module.scss"
 
 const Search = () => {
   const [origin, setOrigin] = useState()
@@ -31,9 +33,9 @@ const Search = () => {
   }
 
   return (
-    <div>
-      <h2>Select your Origin Airport</h2>
-      <div>
+    <div className="main">
+      <h2 className={searchStyles.title}>Select your Origin Airport</h2>
+      <div className={searchStyles.select}>
         <select onChange={handleSelectChange} id="primarySelect">
           <option>Select airport</option>
           {typeof origin != "undefined"
@@ -45,10 +47,11 @@ const Search = () => {
             : ""}
         </select>
       </div>
-      <div>
+      <div className={searchStyles.cardContainerRow}>
         {typeof destination != "undefined" && destination.destinations
           ? destination.destinations.map((element, index) => (
               <CardDestination
+                className={searchStyles.cardDestination}
                 card={element}
                 key={index}
                 origin={destination.code}

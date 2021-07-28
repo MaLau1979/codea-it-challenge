@@ -1,0 +1,45 @@
+.cardContainerColumn {
+  width: 33%;
+  padding: 10px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin: 10px;
+  width: 100%;
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+  img {
+    width: 100%;
+  }
+}
+.container {
+  padding: 2px 16px;
+  .textSegment {
+    text-align: center;
+  }
+  .cardButton {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    border-radius: 7px;
+    border: 3px solid #226fbe;
+    padding: 25px 60px 25px 90px;
+    overflow: hidden;
+    &:hover {
+      background: #4593e3;
+      color: #fff;
+      border-color: #4593e3;
+    }
+  }
+}
