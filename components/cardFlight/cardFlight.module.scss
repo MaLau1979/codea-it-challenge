@@ -1,0 +1,29 @@
+.container {
+  background-color: #ffffff;
+  border: 1px solid #dddede;
+  border-radius: 12px;
+  display: flex;
+  margin: 0 0 20px 0;
+  width: 100%;
+  .title {
+    padding: 10px 20px 0;
+  }
+}
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  .flightDate {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.cluster {
+  width: 80%;
+}
+
+.pricebox {
+  width: 20%;
+}

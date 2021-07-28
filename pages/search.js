@@ -24,7 +24,7 @@ const Search = () => {
     typeof origin != "undefined"
       ? origin.db.routes.map(element => {
           if (element.code === selected) {
-            setDestination(element.destinations)
+            setDestination(element)
           }
         })
       : ""
@@ -46,9 +46,13 @@ const Search = () => {
         </select>
       </div>
       <div>
-        {typeof destination != "undefined" && destination
-          ? destination.map((element, index) => (
-              <CardDestination card={element} key={index} />
+        {typeof destination != "undefined" && destination.destinations
+          ? destination.destinations.map((element, index) => (
+              <CardDestination
+                card={element}
+                key={index}
+                origin={destination.code}
+              />
             ))
           : ""}
       </div>

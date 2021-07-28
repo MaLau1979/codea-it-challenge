@@ -11,7 +11,7 @@ const cardDestination = props => {
       props.card.code !== "" &&
       (props.card.code === "MDZ" || props.card.code === "COR")
     ) {
-      //console.log("enviando datos..." + props.origin);
+      console.log("enviando datos...", props.origin)
       const href =
         `/flights?destination=${props.origin}-${props.card.code}`.toLowerCase()
       router.push(href)
