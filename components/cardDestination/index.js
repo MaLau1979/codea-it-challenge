@@ -13,9 +13,8 @@ const cardDestination = props => {
       props.card.code !== "" &&
       (props.card.code === "MDZ" || props.card.code === "COR")
     ) {
-      console.log("enviando datos...", props.origin)
       const href =
-        `/flights?destination=${props.origin}-${props.card.code}`.toLowerCase()
+        `/flights?destination=${props.origin}-${props.card.code}&city=${props.card.location.cityName}&origin=${props.destination}`.toLowerCase()
       router.push(href)
     }
   }
@@ -28,10 +27,7 @@ const cardDestination = props => {
           <h3 className={cardDestinationStyles.textSegment}>
             {props.card.location.cityName} ({props.card.code})
           </h3>
-          <button
-            className={cardDestinationStyles.cardButton}
-            onClick={sendData}
-          >
+          <button className="cardButton" onClick={sendData}>
             Start your journey!
           </button>
         </div>

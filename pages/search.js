@@ -21,7 +21,7 @@ const Search = () => {
 
   const handleSelectChange = () => {
     const selected = document.getElementById("primarySelect").value
-    //console.log("Selected", selected)
+
     setDestination(selected)
     typeof origin != "undefined"
       ? origin.db.routes.map(element => {
@@ -55,6 +55,7 @@ const Search = () => {
                 card={element}
                 key={index}
                 origin={destination.code}
+                destination={destination.location.cityName}
               />
             ))
           : ""}

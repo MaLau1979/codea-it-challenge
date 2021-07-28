@@ -4,19 +4,31 @@ import moment from "moment"
 import cardFlightStyles from "./cardFlight.module.scss"
 
 const CardFlight = props => {
+  let difference = moment(props.data.arrivalDate).diff(
+    props.data.departureDate,
+    "minutes"
+  )
+
+  function minutesToString(minutes) {
+    let hour = Math.floor(minutes / 60)
+    hour = hour < 10 ? "0" + hour : hour
+    let minute = minutes % 60
+    minute = minute < 10 ? "0" + minute : minute
+    let result = hour + ":" + minute
+
+    return result
+  }
+
   return (
     <div className={cardFlightStyles.container}>
       <div className={cardFlightStyles.cluster}>
         <div className={cardFlightStyles.segment}>
           <div className={cardFlightStyles.segmentTitle}>
-            <span className={cardFlightStyles.title}>IDA</span>
+            <span className={cardFlightStyles.title}>{props.legend}</span>
             <span className={cardFlightStyles.date}>
               {moment(props.data.departureDate).format("LL")}
             </span>
-            |
-            <span className={cardFlightStyles.location}>
-              Location City Name
-            </span>
+            |<span className={cardFlightStyles.location}>{props.cityGo}</span>
           </div>
         </div>
         <div className={cardFlightStyles.content}>
@@ -34,12 +46,7 @@ const CardFlight = props => {
             </div>
             <div className={cardFlightStyles.choiceDuration}>
               <div className={cardFlightStyles.choiceDurationText}>
-                <span>
-                  Duration:{" "}
-                  {moment(props.data.arrivalDate).diff(
-                    props.data.departureDate
-                  )}
-                </span>
+                <span>Duration {minutesToString(difference)}</span>
               </div>
             </div>
             <div className={cardFlightStyles.choiceDestinationDetail}>
@@ -47,7 +54,7 @@ const CardFlight = props => {
                 {moment(props.data.arrivalDate).format("LT")}
               </div>
               <div className={cardFlightStyles.choiceDetailAirport}>
-                {props.data.origin}
+                {props.data.destination}
               </div>
             </div>
           </div>

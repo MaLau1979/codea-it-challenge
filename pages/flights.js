@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import Link from "next/link"
 import { useRouter } from "next/router"
 
 import CardFlight from "../components/cardFlight"
@@ -15,7 +16,6 @@ const Flights = () => {
 
     const response = await fetch(url)
     const flights = await response.json()
-
     console.log(flights)
     setFlight(flights)
   }
@@ -23,26 +23,53 @@ const Flights = () => {
     fetchApi()
   }, [])
 
-  function minutesToString(minutes) {
-    var hour = Math.floor(minutes / 60)
-    hour = hour < 10 ? "0" + hour : hour
-    var minute = minutes % 60
-    minute = minute < 10 ? "0" + minute : minute
-    return hour + ":" + minute
-  }
-
   return (
     <div className="main">
       <div className={flightStyles.content}>
-        <div className={flightStyles.sidebarContainer}></div>
+        <div className={flightStyles.sidebarContainer}>
+          <Link href="/search">
+            <a className="cardButton">Search Another Destination</a>
+          </Link>
+        </div>
         <div className={flightStyles.cardContainer}>
-          <h2>Choose your outbound flight to Mendoza</h2>
+          <h2>
+            Choose your outbound flight to {router.query.city.toUpperCase()}
+          </h2>
           {typeof flight != "undefined" && flight.flights
-            ? flight.flights.map((element, index) => (
-                <CardFlight className={flightStyles.card} data={element} />
-              ))
+            ? flight.flights.map((element, index) =>
+                element.destination != "EPA" ? (
+                  <CardFlight
+                    key={index}
+                    className={flightStyles.card}
+                    data={element}
+                    cityGo={router.query.origin}
+                    cityBack={router.query.city}
+                    legend="Depart"
+                  />
+                ) : (
+                  ""
+                )
+              )
             : ""}
-          <h2>Choose your inbound flight to Buenos Aires</h2>
+          <h2>
+            Choose your inbound flight to {router.query.origin.toUpperCase()}
+          </h2>
+          {typeof flight != "undefined" && flight.flights
+            ? flight.flights.map((element, index) =>
+                element.destination != "COR" ? (
+                  <CardFlight
+                    key={index}
+                    className={flightStyles.card}
+                    data={element}
+                    cityGo={router.query.origin}
+                    cityBack={router.query.city}
+                    legend="Return"
+                  />
+                ) : (
+                  ""
+                )
+              )
+            : ""}
         </div>
       </div>
     </div>

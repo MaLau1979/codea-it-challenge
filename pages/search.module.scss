@@ -1,9 +1,22 @@
 .title,
 .select {
-  margin-left: 20px;
+  margin: 20px;
 }
 .cardContainerRow {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+.select {
+  background: #fff;
+  padding: 20px;
+  margin: 10px;
+  select {
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 2px solid #000;
+    letter-spacing: 0.5px;
+  }
 }

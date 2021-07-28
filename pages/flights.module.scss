@@ -12,8 +12,16 @@
 
 .sidebarContainer {
   width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .searchButton {
+  }
 }
 
 .cardContainer {
   width: 75%;
+  h2 {
+    padding: 20px;
+  }
 }

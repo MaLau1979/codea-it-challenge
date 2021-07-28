@@ -16,3 +16,39 @@ body {
 .main {
   min-height: 80vh;
 }
+.cardButton {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  outline: none;
+  position: relative;
+  border-radius: 7px;
+  border: 3px solid #226fbe;
+  padding: 30px 10px 30px 10px;
+  margin: 10px;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    background: #4593e3;
+    color: #fff;
+    border-color: #4593e3;
+  }
+}
+.cardButton.search {
+  padding: 30px;
+  background: #4593e3;
+  color: #fff;
+  border-color: #4593e3;
+  &:hover {
+    background: #fff;
+    color: #000;
+    border-color: #226fbe;
+  }
+}

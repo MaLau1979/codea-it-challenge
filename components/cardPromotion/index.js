@@ -1,20 +1,28 @@
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
 
-import cardPromotionStyles from './cardPromotion.module.scss'
+import cardPromotionStyles from "./cardPromotion.module.scss"
 
-const CardPromotion = () =>{
-
-  return(
-    <div className={cardPromotionStyles.content}>
-      <div className={cardPromotionStyles.titles}>
-        <h1>Promotions</h1>
-        <p>Are you looking for flights promotions?</p>
+const CardPromotion = () => {
+  return (
+    <div className="main">
+      <div className={cardPromotionStyles.row}>
+        <div className={cardPromotionStyles.col}>
+          <h1 className={cardPromotionStyles.title}>
+            Are you looking for flights promotions?
+          </h1>
+          <div className={cardPromotionStyles.search}>
+            <Link href="/search">
+              <a className="cardButton search">Search</a>
+            </Link>
+          </div>
+        </div>
+        <div className={cardPromotionStyles.col}>
+          <img src="../assets/globe.png" alt="Home" width="40%" />
+        </div>
       </div>
-        <Link href='/search'><a className={cardPromotionStyles.searchButton}>Search</a></Link>
     </div>
   )
 }
 
 export default CardPromotion
-
