@@ -5,6 +5,7 @@ import searchStyles from "./search.module.scss"
 
 const Search = () => {
   const [origin, setOrigin] = useState()
+  const [select, setSelected] = useState(-1)
   const [destination, setDestination] = useState()
 
   const fetchApi = async () => {
@@ -19,13 +20,15 @@ const Search = () => {
     fetchApi()
   }, [])
 
-  const handleSelectChange = () => {
-    const selected = document.getElementById("primarySelect").value
+  const handleSelectChange = e => {
+    const option = e.target.value
 
-    setDestination(selected)
+    setSelected(option)
+
+    setDestination(option)
     typeof origin != "undefined"
       ? origin.db.routes.map(element => {
-          if (element.code === selected) {
+          if (element.code === option) {
             setDestination(element)
           }
         })
@@ -36,8 +39,12 @@ const Search = () => {
     <div className="main">
       <h2 className={searchStyles.title}>Select your Origin Airport</h2>
       <div className={searchStyles.select}>
-        <select onChange={handleSelectChange} id="primarySelect">
-          <option>Select airport</option>
+        <select
+          name="destination"
+          onChange={handleSelectChange}
+          id="primarySelect"
+        >
+          <option value={-1}>Select airport</option>
           {typeof origin != "undefined"
             ? origin.db.routes.map((element, index) => (
                 <option value={element.code} key={index}>
